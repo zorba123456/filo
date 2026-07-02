@@ -1036,20 +1036,21 @@ document.addEventListener("DOMContentLoaded", () => {
       card.innerHTML = `
         <div class="study-card-header">
           <span class="study-card-num">Section ${activeStudySec} - #${index + 1}</span>
+          <button class="btn-copy-ai" id="copy-ai-${item.id}">🤖 复制发给 AI</button>
         </div>
         <div class="study-card-body">
-          <div class="study-text-block cn-block">
-            <div class="study-text-block-label">中文原文 (PDF: ${item.cn_page})</div>
+          <details class="study-text-block cn-block" open>
+            <summary class="study-text-block-label">中文原文 (PDF: ${item.cn_page})</summary>
             <div class="study-text-block-val">${linkifyCompareText(item.cn)}</div>
-          </div>
-          <div class="study-text-block cook-block">
-            <div class="study-text-block-label">Francis H. Cook 英译本 (PDF: ${item.cook_page})</div>
+          </details>
+          <details class="study-text-block cook-block" open>
+            <summary class="study-text-block-label">Francis H. Cook 英译本 (PDF: ${item.cook_page})</summary>
             <div class="study-text-block-val">${item.cook}</div>
-          </div>
-          <div class="study-text-block weitat-block">
-            <div class="study-text-block-label">Wei Tat 英译本 (PDF: ${item.weitat_page})</div>
+          </details>
+          <details class="study-text-block weitat-block" open>
+            <summary class="study-text-block-label">Wei Tat 英译本 (PDF: ${item.weitat_page})</summary>
             <div class="study-text-block-val">${item.weitat}</div>
-          </div>
+          </details>
         </div>
         <div class="study-note-section">
           <button class="study-note-toggle" id="note-toggle-${item.id}">📝 个人研读笔记</button>
@@ -1061,6 +1062,38 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
       `;
+      
+      // Copy to AI
+      const btnCopyAI = card.querySelector(`#copy-ai-${item.id}`);
+      if (btnCopyAI) {
+        btnCopyAI.addEventListener("click", () => {
+          const stripHtml = (html) => {
+            const tmp = document.createElement("DIV");
+            tmp.innerHTML = html;
+            return tmp.textContent || tmp.innerText || "";
+          };
+          const text = `【《成唯识论》原文】(唐·玄奘法师译)
+${stripHtml(item.cn)}
+
+【Francis H. Cook 英译本】(Three Texts on Consciousness Only, BDK)
+${stripHtml(item.cook)}
+
+【Wei Tat 英译本】(Ch'eng Wei-Shih Lun: The Doctrine of Mere-Consciousness)
+${stripHtml(item.weitat)}
+
+---
+💡 讨论指令：
+基于这三个文本，请从中文唯识宗原本的逻辑出发，帮我梳理这段话的核心义理。`;
+          navigator.clipboard.writeText(text).then(() => {
+            btnCopyAI.innerHTML = "✅ 已复制";
+            btnCopyAI.classList.add("copied");
+            setTimeout(() => {
+              btnCopyAI.innerHTML = "🤖 复制发给 AI";
+              btnCopyAI.classList.remove("copied");
+            }, 2000);
+          });
+        });
+      }
       
       // Toggle notes visibility
       const toggleBtn = card.querySelector(`#note-toggle-${item.id}`);
@@ -1208,22 +1241,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
       card.innerHTML = `
         <div class="study-card-header">
-          <span class="study-card-num" style="color: var(--accent-gold); font-size: 1.05rem;">${item.cn_title}</span>
-          <span style="font-size: 0.85rem; color: var(--text-secondary);">${item.en_title}</span>
+          <div>
+            <span class="study-card-num" style="color: var(--accent-gold); font-size: 1.05rem;">${item.cn_title}</span>
+            <span style="font-size: 0.85rem; color: var(--text-secondary); margin-left: 10px;">${item.en_title}</span>
+          </div>
+          <button class="btn-copy-ai" id="copy-ai-baifa-${item.id}">🤖 复制发给 AI</button>
         </div>
         <div class="study-card-body">
-          <div class="study-text-block cn-block">
-            <div class="study-text-block-label">玄奘大师译 颂文与名目</div>
+          <details class="study-text-block cn-block" open>
+            <summary class="study-text-block-label">玄奘大师译 颂文与名目</summary>
             <div class="study-text-block-val">${linkifyCompareText(item.cn)}</div>
-          </div>
-          <div class="study-text-block cook-block">
-            <div class="study-text-block-label">English Translation (DRBU / Heng Hsien & Master Hua)</div>
+          </details>
+          <details class="study-text-block cook-block" open>
+            <summary class="study-text-block-label">English Translation (DRBU / Heng Hsien & Master Hua)</summary>
             <div class="study-text-block-val">${item.en}</div>
-          </div>
-          <div class="study-text-block weitat-block" style="border-left-color: var(--accent-gold);">
-            <div class="study-text-block-label" style="color: var(--accent-gold);">💡 宣化上人浅释与唯识要义 (Commentary Summary)</div>
+          </details>
+          <details class="study-text-block weitat-block" style="border-left-color: var(--accent-gold);" open>
+            <summary class="study-text-block-label" style="color: var(--accent-gold);">💡 宣化上人浅释与唯识要义 (Commentary Summary)</summary>
             <div class="study-text-block-val" style="font-size: 0.92rem; line-height: 1.6;">${linkifyCompareText(item.commentary_summary)}</div>
-          </div>
+          </details>
         </div>
         <div class="study-note-section">
           <button class="study-note-toggle" id="note-toggle-${item.id}">📝 个人研读笔记</button>
@@ -1234,7 +1270,40 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
         </div>
+        
       `;
+
+      // Copy to AI
+      const btnCopyAIBaifa = card.querySelector(`#copy-ai-baifa-${item.id}`);
+      if (btnCopyAIBaifa) {
+        btnCopyAIBaifa.addEventListener("click", () => {
+          const stripHtml = (html) => {
+            const tmp = document.createElement("DIV");
+            tmp.innerHTML = html;
+            return tmp.textContent || tmp.innerText || "";
+          };
+          const text = `【《大乘百法明门论》原文】(世亲菩萨造，唐·玄奘法师译)
+${stripHtml(item.cn)}
+
+【百法明门论英译本】(Shastra on the Door to Understanding the Hundred Dharmas, DRBU / Heng Hsien)
+${stripHtml(item.en)}
+
+【宣化上人浅释与唯识要义】(A General Explanation of the Shastra on the Door to Understanding the Hundred Dharmas)
+${stripHtml(item.commentary_summary)}
+
+---
+💡 讨论指令：
+基于这三个文本，请从中文唯识宗原本的逻辑出发，帮我梳理这段话的核心义理。`;
+          navigator.clipboard.writeText(text).then(() => {
+            btnCopyAIBaifa.innerHTML = "✅ 已复制";
+            btnCopyAIBaifa.classList.add("copied");
+            setTimeout(() => {
+              btnCopyAIBaifa.innerHTML = "🤖 复制发给 AI";
+              btnCopyAIBaifa.classList.remove("copied");
+            }, 2000);
+          });
+        });
+      }
 
       // Toggle notes visibility
       const toggleBtn = card.querySelector(`#note-toggle-${item.id}`);

@@ -1391,3 +1391,96 @@ details.study-text-block:not([open]) > summary.study-text-block-label::before {
     width: 100%;
   }
 }
+
+/* =========================================
+   Mobile Responsive Adaptations
+   ========================================= */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .nav-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    gap: 0.5rem;
+  }
+
+  .nav-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .nav-tab-item {
+    flex-shrink: 0;
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .dict-layout,
+  .study-layout,
+  .expanded-content {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .glass-card {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .study-card-body {
+    padding: 0.8rem;
+  }
+
+  .study-text-block {
+    padding: 0.6rem;
+  }
+  
+  .compare-term-link {
+    font-size: 0.95rem;
+  }
+
+  .btn-copy-ai {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .study-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .study-card-header > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .study-card-header > div > span {
+    margin-left: 0 !important;
+  }
+
+  /* Table responsiveness */
+  .compare-table th, .compare-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .theme-selector-container {
+    position: static;
+    margin-top: 1rem;
+    justify-content: center;
+  }
+}

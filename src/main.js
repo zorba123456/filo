@@ -334,11 +334,65 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  if (tabMapping) tabMapping.addEventListener("click", () => switchTab("tab-mapping"));
-  if (tabStudy) tabStudy.addEventListener("click", () => switchTab("tab-study"));
-  if (tabBaifa) tabBaifa.addEventListener("click", () => switchTab("tab-baifa"));
-  if (tabDictionary) tabDictionary.addEventListener("click", () => switchTab("tab-dictionary"));
-  if (tabAbout) tabAbout.addEventListener("click", () => switchTab("tab-about"));
+  // Hash Router implementation
+  function handleHashChange() {
+    const rawHash = window.location.hash.slice(1);
+    if (!rawHash) {
+      window.history.replaceState(null, null, "#mapping");
+      switchTab("tab-mapping");
+      return;
+    }
+
+    const [pathInfo, queryString] = rawHash.split('?');
+    const pathParts = pathInfo.split('/');
+    const mainPath = pathParts[0];
+
+    const pathTabMap = {
+      "mapping": "tab-mapping",
+      "study": "tab-study",
+      "baifa": "tab-baifa",
+      "dictionary": "tab-dictionary",
+      "about": "tab-about"
+    };
+
+    const targetTab = pathTabMap[mainPath] || "tab-mapping";
+    switchTab(targetTab);
+
+    // Sub-route handling for Study
+    if (mainPath === "study") {
+      const volId = pathParts[1];
+      if (volId && (volId === "vol1" || volId === "vol2")) {
+        if (studyVolumeGrid && studyReadingView) {
+          studyVolumeGrid.style.display = "none";
+          studyReadingView.style.display = "grid";
+          updateSidebarSections(volId);
+          renderStudyCards();
+        }
+      } else {
+        if (studyVolumeGrid && studyReadingView) {
+          studyReadingView.style.display = "none";
+          studyVolumeGrid.style.display = "block";
+        }
+      }
+    }
+
+    // Sub-route handling for Dictionary
+    if (mainPath === "dictionary" && queryString) {
+      const params = new URLSearchParams(queryString);
+      const term = params.get("term");
+      if (term && typeof openTermInDictionaryDOM === "function") {
+        openTermInDictionaryDOM(term);
+      }
+    }
+  }
+
+  window.addEventListener("hashchange", handleHashChange);
+
+  if (tabMapping) tabMapping.addEventListener("click", () => { window.location.hash = "mapping"; });
+  if (tabStudy) tabStudy.addEventListener("click", () => { window.location.hash = "study"; });
+  if (tabBaifa) tabBaifa.addEventListener("click", () => { window.location.hash = "baifa"; });
+  if (tabDictionary) tabDictionary.addEventListener("click", () => { window.location.hash = "dictionary"; });
+  if (tabAbout) tabAbout.addEventListener("click", () => { window.location.hash = "about"; });
 
   let activeFilter = "all";
   let searchQuery = "";
@@ -833,18 +887,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function openTermInDictionary(termName, pushState = true) {
-    // Find the term object in weishiTerms by matching either name or name_trad
+  function openTermInDictionary(termName) {
     const termObj = weishiTerms.find(t => 
       (t.name && t.name.toLowerCase() === termName.toLowerCase()) || 
       (t.name_trad && t.name_trad.toLowerCase() === termName.toLowerCase())
     );
-    
-    // Use the canonical simplified name for DOM selection and search query
     const canonicalName = termObj ? termObj.name : termName;
+    window.location.hash = `dictionary?term=${encodeURIComponent(canonicalName)}`;
+  }
 
-    switchTab("tab-dictionary", pushState, { term: canonicalName });
-    
+  // Exposed globally to be accessible from handleHashChange before initialization if needed
+  window.openTermInDictionaryDOM = function(canonicalName) {
+    if (!weishiTerms || weishiTerms.length === 0) return;
     dictSearchInput.value = canonicalName;
     dictSearchQuery = canonicalName;
     activeAlphabet = "all";
@@ -875,7 +929,7 @@ document.addEventListener("DOMContentLoaded", () => {
         card.scrollIntoView({ behavior: "smooth", block: "center" });
       }
     }, 150);
-  }
+  };
 
   window.showTermByName = function(termName) {
     openTermInDictionary(termName, true);
@@ -1113,19 +1167,14 @@ document.addEventListener("DOMContentLoaded", () => {
       if (card && card.classList.contains("active")) {
         const volId = card.dataset.vol;
         if (volId === "vol1" || volId === "vol2") {
-          studyVolumeGrid.style.display = "none";
-          studyReadingView.style.display = "grid";
-          
-          updateSidebarSections(volId);
-          renderStudyCards();
+          window.location.hash = `study/${volId}`;
         }
       }
     });
 
     if (btnBackToVols) {
       btnBackToVols.addEventListener("click", () => {
-        studyReadingView.style.display = "none";
-        studyVolumeGrid.style.display = "block";
+        window.location.hash = "study";
       });
     }
   }
@@ -1215,7 +1264,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Kick off the load
-  loadDictionary();
-  loadStudyData();
-  loadBaifaData();
+  Promise.all([
+    loadDictionary(),
+    loadStudyData(),
+    loadBaifaData()
+  ]).then(() => {
+    handleHashChange();
+  });
 });

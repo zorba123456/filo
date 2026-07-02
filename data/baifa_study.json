@@ -1,0 +1,102 @@
+[
+  {
+    "id": "baifa_sec1",
+    "category": "citta",
+    "category_name": "心法 (8种)",
+    "cn_title": "一、心法（八种）",
+    "en_title": "I. Mind Dharmas (citta-dharma, 8 kinds)",
+    "cn": "第一心法，略有八种：一眼识、二耳识、三鼻识、四舌识、五身识、六意识、七末那识、八阿赖耶识。",
+    "en": "The first, Mind Dharmas (citta-dharma), include in general eight: 1. The Eye Consciousness (caksus-vijnana); 2. The Ear Consciousness (srotra-vijnana); 3. The Nose Consciousness (ghrana-vijnana); 4. The Tongue Consciousness (jihva-vijnana); 5. The Body Consciousness (kaya-vijnana); 6. The Mind Consciousness (mano-vijnana); 7. The Manas Consciousness (manas-vijnana); 8. The Alaya Consciousness (alaya-vijnana).",
+    "commentary_summary": "宣化上人讲解：心法为百法之首，八识即能变之识体。前五识了别粗境，第六意识通缘三世，第七末那执第八为我，第八阿赖耶为含藏识、万法种子之所依。"
+  },
+  {
+    "id": "baifa_sec2_1",
+    "category": "caitta_universal",
+    "category_name": "心所法 - 遍行 (5种)",
+    "cn_title": "二、心所有法 - (1) 遍行心所（五种）",
+    "en_title": "II. Dharmas Interactive with Mind - (1) Universally Interactive (5 kinds)",
+    "cn": "第二心所有法，略有五十一种，分为六位：遍行有五、别境有五、善有十一、烦恼有六、随烦恼有二十、不定有四。遍行五者：一作意、二触、三受、四想、五思。",
+    "en": "The second, Dharmas Interactive with the Mind (caittasika-dharma), include in general fifty-one, divided into six categories. The Five Universally Interactive (sarvatraga) are: 1. Attention (manaskara); 2. Contact (sparsa); 3. Feeling (vedana); 4. Conceptualization (samjna); 5. Deliberation (cetana).",
+    "commentary_summary": "遍行者，遍于一切心、一切性、一切时、一切地。作意警心，触和合三，受领纳境，想取轨相，思造作心。"
+  },
+  {
+    "id": "baifa_sec2_2",
+    "category": "caitta_particular",
+    "category_name": "心所法 - 别境 (5种)",
+    "cn_title": "二、心所有法 - (2) 别境心所（五种）",
+    "en_title": "II. Dharmas Interactive with Mind - (2) Particular States (5 kinds)",
+    "cn": "别境五者：一欲、二胜解、三念、四三摩地、五慧。",
+    "en": "The Five Particular States (viniyata) are: 1. Desire (chanda); 2. Resolution (adhimoksha); 3. Recollection (smrti); 4. Concentration (samadhi); 5. Judgment / Wisdom (prajna).",
+    "commentary_summary": "别境者，各别缘境而生。欲希望所乐境，胜解印持决定境，念明记曾习境，定专专注所观境，慧简择得失境。"
+  },
+  {
+    "id": "baifa_sec2_3",
+    "category": "caitta_wholesome",
+    "category_name": "心所法 - 善 (11种)",
+    "cn_title": "二、心所有法 - (3) 善心所（十一种）",
+    "en_title": "II. Dharmas Interactive with Mind - (3) Wholesome Dharmas (11 kinds)",
+    "cn": "善十一者：一信、二精进、三惭、四愧、五无贪、六无嗔、七无痴、八轻安、九不放逸、十行舍、十一不害。",
+    "en": "The Eleven Wholesome Dharmas (kusala) are: 1. Faith (sraddha); 2. Vigor (virya); 3. Shame (hri); 4. Remorse (apatrapya); 5. Absence of Greed (alobha); 6. Absence of Anger (advesha); 7. Absence of Stupidity (amoha); 8. Light Ease (prasrabdhi); 9. Non-Laxness (apramada); 10. Renunciation / Equanimity (upeksa); 11. Non-Harming (ahimsa).",
+    "commentary_summary": "善心所唯顺白业。信者心净为性，惭愧自他尊贤尊重，无贪嗔痴三善根为诸善根本，不害悲愍顺菩提道。"
+  },
+  {
+    "id": "baifa_sec2_4",
+    "category": "caitta_klesa",
+    "category_name": "心所法 - 根本烦恼 (6种)",
+    "cn_title": "二、心所有法 - (4) 根本烦恼（六种）",
+    "en_title": "II. Dharmas Interactive with Mind - (4) Fundamental Afflictions (6 kinds)",
+    "cn": "烦恼六者：一贪、二嗔、三痴、四慢、五疑、六不正见。",
+    "en": "The Six Fundamental Afflictions (klesa) are: 1. Greed (raga); 2. Anger (pratigha); 3. Stupidity (moha); 4. Arrogance (mana); 5. Doubt (vicikitsa); 6. Improper Views (drsti).",
+    "commentary_summary": "根本烦恼能生诸随烦恼。贪染着五欲，嗔恚忿怒，痴无明迷理，慢恃己凌他，疑犹预不决，恶见邪执执我法。"
+  },
+  {
+    "id": "baifa_sec2_5",
+    "category": "caitta_upaklesa",
+    "category_name": "心所法 - 随烦恼 (20种)",
+    "cn_title": "二、心所有法 - (5) 随烦恼（二十种）",
+    "en_title": "II. Dharmas Interactive with Mind - (5) Derivative Afflictions (20 kinds)",
+    "cn": "随烦恼二十者：一忿、二恨、三恼、四覆、五诳、六谄、七憍、八害、九嫉、十吝；十一无惭、十二无愧；十三不信、十四懈怠、十五放逸、十六惛沉、十七掉举、十八失念、十九不正知、二十散乱。",
+    "en": "The Twenty Derivative Afflictions (upaklesa) are divided into Minor (忿恨恼覆诳谄憍害嫉吝), Intermediate (无惭无愧), and Major (不信懈怠放逸惛沉掉举失念不正知散乱).",
+    "commentary_summary": "随根本烦恼分位起。小随十个自类各别起，中随二个遍随染心起，大随八个遍一切染心起。"
+  },
+  {
+    "id": "baifa_sec2_6",
+    "category": "caitta_aniyata",
+    "category_name": "心所法 - 不定 (4种)",
+    "cn_title": "二、心所有法 - (6) 不定心所（四种）",
+    "en_title": "II. Dharmas Interactive with Mind - (6) Unfixed Dharmas (4 kinds)",
+    "cn": "不定四者：一睡眠、二恶作（悔）、三寻、四伺。",
+    "en": "The Four Unfixed (aniyata) are: 1. Sleep (middha); 2. Regret / Remorse (kaukritya); 3. Examination (vitarka); 4. Investigation (vicara).",
+    "commentary_summary": "不定者，可善可恶，可染可净。睡眠令身心不自在，恶作追悔先所作，寻粗思度推求，伺细分察审审。"
+  },
+  {
+    "id": "baifa_sec3",
+    "category": "rupa",
+    "category_name": "色法 (11种)",
+    "cn_title": "三、色法（十一种）",
+    "en_title": "III. Form Dharmas (rupa-dharma, 11 kinds)",
+    "cn": "第三色法，略有十一种：一眼、二耳、三鼻、四舌、五身、六色、七声、八香、九味、十触、十一法处所摄色。",
+    "en": "The third, Form Dharmas (rupa-dharma), in general include eleven kinds: 1. Eyes (caksus); 2. Ears (srotra); 3. Nose (ghrana); 4. Tongue (jihva); 5. Body (kaya); 6. Forms (rupa); 7. Sounds (sabda); 8. Smells (gandha); 9. Flavors (rasa); 10. Objects of Touch (prastavya); 11. Dharmas Pertaining to Form (dharmayatanikani rupani).",
+    "commentary_summary": "色者质碍变坏。前五为内五根（胜义根/扶尘根），次五为外五境，第十一法处所摄色（极略色、极迥色、受所引色、遍计所起色、定所生自在色）乃意识所缘之色影。"
+  },
+  {
+    "id": "baifa_sec4",
+    "category": "viprayukta",
+    "category_name": "心不相应行法 (24种)",
+    "cn_title": "四、心不相应行法（二十四种）",
+    "en_title": "IV. Dharmas Not Interactive with Mind (citta-viprayukta, 24 kinds)",
+    "cn": "第四心不相应行法，略有二十四种：一得、二命根、三众同分、四异生性、五无想定、六灭尽定、七无想报、八名身、九句身、十文身、十一生、十二住、十三老、十四无常、十五流转、十六定异、十七相应、十八势速、十九次第、二十方、二十一时、二十二数、二十三和合性、二十四不和合性。",
+    "en": "The fourth, Dharmas Not Interactive with the Mind (citta-viprayukta-samskara), include twenty-four: 1. Attainment (prapti); 2. Life-Faculty (jivitendriya); 3. Generic Similarity; 4. Dissimilarity; 5. No-Thought Samadhi; 6. Samadhi of Extinction; 7. Reward of No Thought; 8. Bodies of Nouns; 9. Bodies of Sentences; 10. Bodies of Phonemes; 11. Birth; 12. Dwelling; 13. Aging; 14. Impermanence; 15. Revolution; 16. Distinction; 17. Interaction; 18. Speed; 19. Sequence; 20. Direction; 21. Time; 22. Numeration; 23. Combination; 24. Discontinuity.",
+    "commentary_summary": "非色非心，依前三法（色心心所）分位假立。无独立实自性，如得与非得、命根、假立四相（生住异灭）、时间空间数量等。"
+  },
+  {
+    "id": "baifa_sec5",
+    "category": "asamskrta",
+    "category_name": "无为法 (6种)",
+    "cn_title": "五、无为法（六种）与二无我总结",
+    "en_title": "V. Unconditioned Dharmas (asamskrta, 6 kinds) & Summary of Two Non-Selves",
+    "cn": "第五无为法者，略有六种：一虚空无为、二择灭无为、三非择灭无为、四不动灭无为、五想受灭无为、六真如无为。言无我者，略有二种：一补特伽罗无我（人无我）、二法无我。",
+    "en": "The fifth, Unconditioned Dharmas (asamskrta), include six: 1. Unconditioned Empty Space (akasa); 2. Extinction Attained by Selection (pratisamkhyanirodha); 3. Extinction Unselected (apratisamkhyanirodha); 4. Unmoving Extinction (aninjya); 5. Extinction of Feeling and Thinking (samjnavedayitanirodha); 6. True Suchness (Tathata). What is meant by no-self? Two Kinds of Non-Self: 1. Pudgala-nairatmya (Non-self of person); 2. Dharma-nairatmya (Non-self of dharmas).",
+    "commentary_summary": "无为者无因缘造作，唯识宗依法性假设施有。前五无为依真如假立，真如即万法真实之性。以百法通达二无我（人无我与法无我），即入大乘唯识实相真理。"
+  }
+]

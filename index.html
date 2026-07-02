@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>filo | 唯识研读文献门户</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <header style="position: relative;">
+        <div class="logo-badge">
+          <span>🧘</span>
+          <span>filo studies portal</span>
+        </div>
+        <h1>唯识研读文献门户</h1>
+        <p class="subtitle">通过中英文版本对照方式系统化学习《成唯识论》。目前已收录玄奘原著十卷本、韦达英译本及库克英译本对照关系。</p>
+        
+        <!-- Theme Selector -->
+        <div class="theme-selector-container">
+          <label for="theme-select">🎨 护眼主题：</label>
+          <select id="theme-select" class="theme-select-dropdown">
+            <option value="dark">🌌 深蓝夜色 (默认暗色)</option>
+            <option value="green">🍵 护眼绿茶 (低疲劳感)</option>
+            <option value="sepia">📖 暖黄纸墨 (温和阅读)</option>
+          </select>
+        </div>
+      </header>
+
+      <main>
+        <!-- Nav Tabs -->
+        <div class="nav-tabs">
+          <div class="nav-tab-item active" id="tab-mapping">《成唯识论》中英文目录对照</div>
+          <div class="nav-tab-item" id="tab-study">逐卷研读</div>
+          <div class="nav-tab-item" id="tab-baifa">《百法明门论》专区</div>
+          <div class="nav-tab-item" id="tab-dictionary">唯识名词白话新解</div>
+          <div class="nav-tab-item" id="tab-about">研读说明与指南</div>
+        </div>
+
+        <!-- Tab 1: Mapping Content -->
+        <div id="mapping-panel" class="tab-panel fade-in">
+          <!-- Intro Card -->
+          <div class="glass-card" style="margin-bottom: 1.5rem; padding: 1.5rem;">
+            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+              💡 <strong>研读指南</strong>：下方表格已将三本经典完全对齐。点击表格中的任意行，均可展开查看该卷/章在各英译本中的<strong>详细节章节名</strong>与<strong>印刷页码、PDF 实际页码</strong>。
+              支持在右侧输入框进行主题或卷次的模糊检索。
+            </p>
+          </div>
+
+          <!-- Toolbar (Search & Filters) -->
+          <div class="toolbar">
+            <div class="search-wrapper">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="search-input" class="search-input" placeholder="输入关键字检索（例如：末那识、阿赖耶识、四缘、究竟位）..." />
+            </div>
+            
+            <div class="filter-group" id="filter-group">
+              <button class="btn-filter active" data-filter="all">全部</button>
+              <button class="btn-filter" data-filter="alaya">第八识</button>
+              <button class="btn-filter" data-filter="manas">第七识</button>
+              <button class="btn-filter" data-filter="six">前六识</button>
+              <button class="btn-filter" data-filter="logic">唯识论证</button>
+              <button class="btn-filter" data-filter="path">修证五位</button>
+            </div>
+          </div>
+
+          <!-- Table -->
+          <div class="table-responsive">
+            <table class="compare-table" id="compare-table">
+              <thead>
+                <tr>
+                  <th style="width: 15%">中文原著</th>
+                  <th style="width: 35%">核心探讨主题与颂文</th>
+                  <th style="width: 25%">韦达译本 (Wei Tat)</th>
+                  <th style="width: 25%">库克译本 (BDK / Cook)</th>
+                </tr>
+              </thead>
+              <tbody id="table-body">
+                <!-- Injected dynamically by main.js -->
+              </tbody>
+            </table>
+          </div>
+
+          <div id="no-results" class="no-results" style="display: none;">
+            未找到匹配的对比内容，请尝试其他搜索词。
+          </div>
+        </div>
+
+        <!-- Tab 4: Study Panel -->
+        <div id="study-panel" class="tab-panel fade-in" style="display: none;">
+          <!-- View A: Volume Selection Grid (目录页) -->
+          <div id="study-volume-grid" class="study-grid-view">
+            <div class="glass-card" style="padding: 2rem; margin-bottom: 2rem; text-align: center;">
+              <h2 style="font-family: var(--font-title); font-size: 1.8rem; margin-bottom: 0.75rem; background: linear-gradient(135deg, var(--text-primary), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">《成唯识论》逐卷研读</h2>
+              <p style="color: var(--text-secondary); font-size: 0.95rem;">请选择您要开始研读的卷次。每一卷将提供精细化的句级中英对照及个人学习笔记功能。</p>
+            </div>
+            
+            <div class="vol-grid">
+              <div class="vol-grid-card active" data-vol="vol1">
+                <span class="vol-card-badge">卷第一</span>
+                <h3 class="vol-card-title">我法二执与外道小乘批判</h3>
+                <p class="vol-card-desc">探讨造论宗旨，破数论、胜论、邪命等外道及小乘我执。</p>
+                <div class="vol-card-status">点击进入研读 →</div>
+              </div>
+              
+              <div class="vol-grid-card active" data-vol="vol2">
+                <span class="vol-card-badge">卷第二</span>
+                <h3 class="vol-card-title">破不相应行与阿赖耶识（初能变）</h3>
+                <p class="vol-card-desc">破不相应行法与无为法，详释阿赖耶识之自相、因相、果相、种子六义及四分说。</p>
+                <div class="vol-card-status">点击进入研读 →</div>
+              </div>
+
+              <div class="vol-grid-card locked">
+                <span class="vol-card-badge">卷第三</span>
+                <h3 class="vol-card-title">相应心所与种子学说</h3>
+                <p class="vol-card-desc">探讨五遍行心所、心分（四分说）及种子之熏习与特征。</p>
+                <div class="vol-card-status">🔒 未开启</div>
+              </div>
+
+              <div class="vol-grid-card locked">
+                <span class="vol-card-badge">卷第四</span>
+                <h3 class="vol-card-title">阿赖耶识证明与末那识</h3>
+                <p class="vol-card-desc">阿赖耶识之大乘/小乘教理证，及第七末那识之引入。</p>
+                <div class="vol-card-status">🔒 未开启</div>
+              </div>
+
+              <div class="vol-grid-card locked">
+                <span class="vol-card-badge">卷第五</span>
+                <h3 class="vol-card-title">末那心所与前六识名义</h3>
+                <p class="vol-card-desc">探讨末那识相应之四烦恼，及前六识了境能变之特征。</p>
+                <div class="vol-card-status">🔒 未开启</div>
+              </div>
+
+              <div class="vol-grid-card locked">
+                <span class="vol-card-badge">卷第六</span>
+                <h3 class="vol-card-title">前六识相应心所分析</h3>
+                <p class="vol-card-desc">详释善心所、六根本烦恼及二十随烦恼等法相。</p>
+                <div class="vol-card-status">🔒 未开启</div>
+              </div>
+
+              <div class="vol-grid-card locked">
+                <span class="vol-card-badge">卷第七</span>
+                <h3 class="vol-card-title">不定心所与八识一异</h3>
+                <p class="vol-card-desc">探讨不定心所、前六识生起因缘、前八识俱转一异关系。</p>
+                <div class="vol-card-status">🔒 未开启</div>
+              </div>
+
+              <div class="vol-grid-card locked">
+                <span class="vol-card-badge">卷第八</span>
+                <h3 class="vol-card-title">四缘十因与三自性</h3>
+                <p class="vol-card-desc">探讨因果四缘、十二因缘流转，及唯识核心三自性定义。</p>
+                <div class="vol-card-status">🔒 未开启</div>
+              </div>
+
+              <div class="vol-grid-card locked">
+                <span class="vol-card-badge">卷第九</span>
+                <h3 class="vol-card-title">三无性与修证前三位</h3>
+                <p class="vol-card-desc">详释三无性及修证之资粮位、加行位、通达位境界。</p>
+                <div class="vol-card-status">🔒 未开启</div>
+              </div>
+
+              <div class="vol-grid-card locked">
+                <span class="vol-card-badge">卷第十</span>
+                <h3 class="vol-card-title">十地修习与究竟佛果</h3>
+                <p class="vol-card-desc">探讨修习位十地十波罗蜜，及究竟位之四智与三身佛果。</p>
+                <div class="vol-card-status">🔒 未开启</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- View B: Reading Board (研读页) -->
+          <div id="study-reading-view" class="study-layout" style="display: none;">
+            <!-- Sidebar: Sections Only -->
+            <div class="study-sidebar">
+              <button class="btn-action-outline btn-back-to-vols" id="btn-back-to-vols" style="margin-bottom: 0.5rem; justify-content: center; width: 100%;">
+                ← 返回卷次目录
+              </button>
+              
+              <!-- Section Select Card -->
+              <div class="glass-card" style="padding: 1.25rem;">
+                <h3 style="font-family: var(--font-title); font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; border-bottom: 1px solid var(--border-glass); padding-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">🔖 研读章节</h3>
+                <div class="study-sec-list" id="study-sec-list">
+                  <button class="btn-study-sec active" data-sec="1">1. 稽首颂与造论宗旨</button>
+                  <button class="btn-study-sec" data-sec="2">2. 唯识能变与假说我法</button>
+                  <button class="btn-study-sec" data-sec="3">3. 破外道我执</button>
+                  <button class="btn-study-sec" data-sec="4">4. 破小乘我执</button>
+                  <button class="btn-study-sec" data-sec="5">5. 破法执</button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Main Content: Cards -->
+            <div class="study-main">
+              <div class="study-header">
+                <span style="font-size: 0.9rem; color: var(--text-secondary);">当前正在研读：<strong id="study-current-location" class="text-accent">卷第一 · 1. 稽首颂与造论宗旨</strong></span>
+              </div>
+              
+              <!-- Aligned Cards Container -->
+              <div class="study-cards-container" id="study-cards-container">
+                <!-- Injected dynamically by main.js -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Tab 3: Dictionary Panel -->
+        <div id="dictionary-panel" class="tab-panel fade-in" style="display: none;">
+          <!-- Toolbar -->
+          <div class="glass-card dict-controls">
+            <div class="dict-search-row">
+              <div class="search-wrapper" style="flex: 2; margin-bottom: 0;">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="dict-search-input" class="search-input" placeholder="输入汉字或拼音首字母进行搜索（如：末那识、mns）..." />
+              </div>
+              <div class="dict-actions-row">
+                <label class="btn-action-outline checkbox-label" style="cursor: pointer; user-select: none;">
+                  <input type="checkbox" id="dict-search-only-names" checked style="margin-right: 0.4rem; cursor: pointer; accent-color: var(--accent-purple);" />
+                  仅搜词条名
+                </label>
+                <button class="btn-action-outline" id="btn-toggle-favs">⭐ 仅看收藏 (<span id="fav-count">0</span>)</button>
+                <button class="btn-action-outline" id="btn-toggle-t-s">繁/简 切换</button>
+              </div>
+            </div>
+            
+            <!-- Pinyin Index -->
+            <div class="alphabet-filter-container">
+              <span class="filter-label">拼音首字母：</span>
+              <div class="alphabet-group" id="alphabet-group">
+                <button class="btn-char active" data-char="all">全部</button>
+                <!-- A-Z buttons will be generated by JS -->
+              </div>
+            </div>
+
+            <!-- Stroke Index -->
+            <div class="stroke-filter-container">
+              <span class="filter-label">笔画过滤：</span>
+              <div class="stroke-group" id="stroke-group">
+                <button class="btn-stroke active" data-stroke="all">全部</button>
+                <!-- 1-25 stroke buttons will be generated by JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Dictionary Content Layout -->
+          <div class="dict-layout">
+            <!-- Term List Section -->
+            <div class="dict-main">
+              <div class="dict-results-header">
+                <span>共找到 <strong id="dict-result-count" class="text-accent">0</strong> 个词条</span>
+              </div>
+              <div class="dict-cards-list" id="dict-cards-list">
+                <!-- Dynamically loaded -->
+              </div>
+              <div id="dict-load-more-container" style="text-align: center; margin-top: 1.5rem; display: none;">
+                <button class="btn-action-outline" id="btn-dict-load-more">加载更多</button>
+              </div>
+              <div id="dict-no-results" class="no-results" style="display: none;">
+                未找到匹配的名词解释，请尝试其他词或拼音。
+              </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="dict-sidebar">
+              <!-- Favorites Card -->
+              <div class="glass-card sidebar-card">
+                <h3>⭐ 我的收藏</h3>
+                <div class="sidebar-list" id="fav-list-container">
+                  <div class="sidebar-empty">暂无收藏词条</div>
+                </div>
+              </div>
+
+              <!-- History Card -->
+              <div class="glass-card sidebar-card">
+                <h3>🕒 最近浏览</h3>
+                <div class="sidebar-list" id="history-list-container">
+                  <div class="sidebar-empty">暂无浏览历史</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: About Panel -->
+        <div id="about-panel" class="tab-panel fade-in" style="display: none;">
+          <div class="glass-card">
+            <h2 style="font-family: var(--font-title); font-size: 1.8rem; margin-bottom: 1.5rem; background: linear-gradient(135deg, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">本门户对照所使用的文献版本</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+              <div class="detail-section">
+                <h4 style="color: var(--accent-cyan);">中文原著</h4>
+                <p class="detail-item" style="color: var(--text-secondary); font-size: 0.9rem;">
+                  <strong>《成唯识论》 PDF 版</strong><br>
+                  玄奘大师奉诏译，糅合印度护法等十大论师对世亲菩萨《唯识三十论颂》的注释。共十卷，本系统页码完全对齐该 PDF 的页面。
+                </p>
+              </div>
+
+              <div class="detail-section">
+                <h4 style="color: var(--accent-purple);">Wei Tat 英译本</h4>
+                <p class="detail-item" style="color: var(--text-secondary); font-size: 0.9rem;">
+                  <strong>Ch'eng Wei-Shih Lun: The Doctrine of Mere-Consciousness</strong><br>
+                  由韦达 (Wei Tat) 翻译，1973年出版。该版本包含中英文对照，划分了 9 个 Book。本系统中 PDF 页码包含前言偏移。
+                </p>
+              </div>
+
+              <div class="detail-section">
+                <h4 style="color: var(--accent-gold);">Francis H. Cook 英译本</h4>
+                <p class="detail-item" style="color: var(--text-secondary); font-size: 0.9rem;">
+                  <strong>Demonstration of Consciousness Only</strong><br>
+                  由 Francis H. Cook 翻译，收录于 BDK English Tripitaka 系列。划分了 15 个 Chapter。本系统 PDF 实际页码 = 印刷页码 + 13。
+                </p>
+              </div>
+            </div>
+
+            <h3 style="font-family: var(--font-title); color: #fff; margin-bottom: 1rem;">后续研读计划</h3>
+            <ul style="color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.8;">
+              <li>逐句中英文本对照：在目录对照的基础之上，引入逐卷逐段的梵、藏、汉、英四语对照。</li>
+              <li>唯识名相词典：内置核心佛教哲学名相（如五八识、心所法、三自性）的英文概念解释及索引。</li>
+              <li>检索与标注系统：方便研究者直接对重点段落进行标注并生成学习笔记。</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Tab: Baifa Panel (百法明门论专区) -->
+        <div id="baifa-panel" class="tab-panel fade-in" style="display: none;">
+          <div class="glass-card" style="padding: 2rem; margin-bottom: 2rem; text-align: center;">
+            <h2 style="font-family: var(--font-title); font-size: 1.8rem; margin-bottom: 0.75rem; background: linear-gradient(135deg, var(--text-primary), var(--accent-gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">《大乘百法明门论》最佳实践研读专区</h2>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+              天亲菩萨造·玄奘大师译｜英译与宣化上人浅释（Hsuan Hua & Heng Hsien）精选对照。<br>
+              《百法明门论》为唯识学之入门总纲。将宇宙万有总结归纳为<strong>五位百法</strong>，以明“一切法无我”之实相理趣。
+            </p>
+          </div>
+
+          <div class="baifa-cards-container" id="baifa-cards-container">
+            <!-- Injected dynamically by main.js -->
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

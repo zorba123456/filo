@@ -1417,6 +1417,11 @@ details.study-text-block:not([open]) > summary.study-text-block-label::before {
     display: none;
   }
   
+  .study-sidebar {
+    position: static;
+    margin-bottom: 1rem;
+  }
+
   .nav-tab-item {
     flex-shrink: 0;
     font-size: 0.9rem;

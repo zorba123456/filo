@@ -583,7 +583,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load Dictionary Data
   async function loadDictionary() {
     try {
-      const response = await fetch("/src/weishi_terms.json");
+      const response = await fetch(import.meta.env.BASE_URL + "data/weishi_terms.json");
       weishiTerms = await response.json();
       
       updateAlphabetFilter();
@@ -1011,7 +1011,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function loadStudyData() {
     try {
-      const response = await fetch("/src/vol1_study.json");
+      const response = await fetch(import.meta.env.BASE_URL + "data/vol1_study.json");
       studyData = await response.json();
       renderStudyCards();
     } catch (e) {
@@ -1218,7 +1218,7 @@ ${stripHtml(item.weitat)}
 
   async function loadBaifaData() {
     try {
-      const res = await fetch("/src/baifa_study.json");
+      const res = await fetch(import.meta.env.BASE_URL + "data/baifa_study.json");
       if (res.ok) {
         baifaData = await res.json();
         renderBaifaCards();
